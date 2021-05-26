@@ -30,6 +30,7 @@ typedef struct 	s_node
 typedef struct	s_stack
 {
 	t_node		*top;
+	int 		size;
 }				t_stack;
 
 t_stack			*st_new();
@@ -49,8 +50,6 @@ t_node 			*st_get_node(t_stack *st, int n);
 void			st_delete_pos(t_stack *st, int n);
 t_stack 		*st_dup(t_stack *st);
 
-int				st_free(t_stack *st);
-
-int ft_execute(t_inst inst, t_stack *a, t_stack *b);
+void			*st_free(t_stack *st);
 
 #endif
