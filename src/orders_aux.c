@@ -1,6 +1,6 @@
 #include "extras.h"
 
-t_inst get_inst3(const char *str)
+t_inst	get_inst3(const char *str)
 {
 	if (str[0] == 'r' && str[1] == 'r')
 	{
@@ -14,9 +14,9 @@ t_inst get_inst3(const char *str)
 	return (NOTHING);
 }
 
-t_inst get_inst(const char *str)
+t_inst	get_inst(const char *str)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(str);
 	if (len == 2)

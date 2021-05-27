@@ -1,18 +1,18 @@
 #include "extras.h"
 
-int ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
 	return (i);
 }
 
-int ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t i;
+	size_t	i;
 
 	if ((!s1 && !s2))
 		return (0);
@@ -22,12 +22,12 @@ int ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-int ft_str_is_int(const char *str)
+int	ft_str_is_int(const char *str)
 {
-	const char *cmp;
-	int len;
-	int cmp_len;
-	int i;
+	const char	*cmp;
+	int			len;
+	int			cmp_len;
+	int			i;
 
 	i = 0;
 	if (!str)
@@ -42,7 +42,7 @@ int ft_str_is_int(const char *str)
 		return (1);
 	if (len > cmp_len)
 		return (0);
-	while(i < len)
+	while (i < len)
 	{
 		if (str[i] > cmp[i])
 			return (0);
@@ -53,9 +53,9 @@ int ft_str_is_int(const char *str)
 
 int	ft_check_st_sorted(t_stack *st)
 {
-	t_node *n;
-	int prev;
-	int control;
+	t_node	*n;
+	int		prev;
+	int		control;
 
 	control = 1;
 	n = st->top;

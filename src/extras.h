@@ -77,14 +77,14 @@ int				ft_check_argv(int argc, char **argv);
 /*
 *	utils4
 */
-int ft_strcmp(const char *s1, const char *s2);
+int				ft_strcmp(const char *s1, const char *s2);
 
 /*
 *	utils5
 */
-char *ft_append(const char *s1, const char *s2);
-char *ft_strdup(const char *str);
-char *ft_strjoin(char *s1, char *s2, char c);
+char			*ft_append(const char *s1, const char *s2);
+char			*ft_strdup(const char *str);
+char			*ft_strjoin(char *s1, char *s2, char c);
 
 /*
 *	stacksorter

@@ -29,8 +29,8 @@ int	get_next_line(char **line)
 
 int	ft_loop(t_stack *a, t_stack *b)
 {
-	char *line;
-	t_inst i;
+	char	*line;
+	t_inst	i;
 
 	while (get_next_line(&line))
 	{
@@ -57,7 +57,7 @@ int	init_program(int argc, t_stack **st, t_stack **st2)
 	return (0);
 }
 
-int main (int argc, char *argv[])
+int	main (int argc, char *argv[])
 {
 	int		aux;
 	t_stack	*a;
@@ -70,12 +70,13 @@ int main (int argc, char *argv[])
 	aux = 0;
 	while (argv[++aux])
 		if (!st_push(a, ft_atoi(argv[aux])))
-			return ((int)st_free(a) + (int)st_free(b) + 1 + write(1, "Error\n", 6));
+			return ((int)st_free(a) + (int)st_free(b) + 1
+				+ write(1, "Error\n", 6));
 	if (!st_reverse(&a))
 		return (write(2, "Error\n", 6) + (int)st_free(a) + (int)st_free(b));
 	if (!ft_check_stack(a))
 		return (write(2, "Error\n", 6) + (int)st_free(a) + (int)st_free(b));
-	aux =ft_loop(a, b);
+	aux = ft_loop(a, b);
 	if (aux > 0)
 		write(1, "OK\n", 3);
 	else if (aux == 0)
