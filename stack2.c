@@ -1,5 +1,6 @@
 #include "stack.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 t_node		*st_get_node(t_stack *st, int n)
 {

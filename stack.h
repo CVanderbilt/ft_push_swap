@@ -48,6 +48,7 @@ int				st_contains(t_stack *st, int n);
 t_node 			*st_find(t_stack *st, int n);
 t_node 			*st_get_node(t_stack *st, int n);
 void			st_delete_pos(t_stack *st, int n);
+void			st_delete_node(t_stack *st, t_node *n);
 t_stack 		*st_dup(t_stack *st);
 
 void			*st_free(t_stack *st);

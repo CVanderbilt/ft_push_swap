@@ -4,6 +4,30 @@
 #include <stdlib.h>
 #include <limits.h>
 
+int		ft_get_max(t_stack *st, int max, int *ret)
+{
+	t_node *aux;
+	int control;
+
+	control = 1;
+	aux = st->top;
+	while (aux)
+	{
+		if (aux->value <= max)
+		{
+			if (control || aux->value > *ret)
+			{
+				control = 0;
+				*ret = aux->value;
+			}
+		}
+		aux = aux->next;
+	}
+	if (!control)
+		return (1);
+	return (0);
+}
+
 int		ft_get_min(t_stack *st, int min, int *ret)
 {
 	t_node *aux;

@@ -37,6 +37,8 @@ t_node		*st_pop(t_stack *st)
 {
 	t_node *ret;
 
+	if (!st->top)
+		return (0);
 	ret = st->top;
 	st_delete_top(st);
 	return (ret);

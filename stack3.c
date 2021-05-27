@@ -33,6 +33,12 @@ t_node 		*st_find(t_stack *st, int n)
 	return (aux);
 }
 
+void 		st_delete_node(t_stack *st, t_node *n)
+{
+	if (n)
+		st_delete_pos(st, st_contains(st, n->value));
+}
+
 void 		st_delete_pos(t_stack *st, int pos)
 {
 	int i;
@@ -48,6 +54,7 @@ void 		st_delete_pos(t_stack *st, int pos)
 		aux = st->top->next;
 		free (st->top);
 		st->top = aux;
+		st->size--;
 	}
 	while (i < pos && aux)
 	{
@@ -58,4 +65,5 @@ void 		st_delete_pos(t_stack *st, int pos)
 		return ;
 	prev->next = aux->next;
 	free (aux);
+	st->size--;
 }
