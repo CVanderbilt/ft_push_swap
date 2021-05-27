@@ -27,7 +27,7 @@ BMP=srcs/bmp.c
 SRC=asort.c asort_aux1.c asort_aux2.c \
 bsort.c checks.c evaluate.c main.c \
 orders.c sorter.c stack1.c stack2.c stack3.c \
-stack_sorter.c utils1.c utils2.c utils3.c
+stack_sorter.c utils1.c utils2.c utils3.c utils4.c
 
 OBJ=$(SRC:.c=.o)
 

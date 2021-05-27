@@ -70,10 +70,18 @@ int				ft_num_is_min_or_max(t_stack *st, int num);
 int				ft_execute_d(t_data *d, t_inst i);
 int				ft_free_data(t_data *d);
 void			*ft_dummy_sum(int n);
+int				ft_check_argv(int argc, char **argv);
+
+/*
+*	utils3
+*/
+int ft_strcmp(const char *s1, const char *s2);
 
 /*
 *	stacksorter
 */
 int				ft_node_sorted(t_stack *a, t_stack *b, int n);
+int				ft_str_is_int(const char *str);
+int				ft_strlen(const char *str);
 
 #endif
