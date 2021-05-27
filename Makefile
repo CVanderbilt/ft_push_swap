@@ -24,12 +24,16 @@ LDLIBS=-lft
 
 BMP=srcs/bmp.c
 
-SRC=checks.c main.c not_valid.c orders.c stack.c stack2.c stack3.c utils.c stack_sorter.c
+SRC=asort.c asort_aux1.c asort_aux2.c \
+bsort.c checks.c evaluate.c main.c \
+orders.c sorter.c stack1.c stack2.c stack3.c \
+stack_sorter.c utils1.c utils2.c utils3.c
 
 OBJ=$(SRC:.c=.o)
 
 $(NAME):
-	$(CC) $(CFLAGS) -o $(NAME) $(SRC) 
+	$(CC) $(CFLAGS) -c $(SRC)
+	$(CC) $(CFLAGS) -o $(NAME) $(SRC:.c=.o) 
 
 all: $(NAME)
 
@@ -39,7 +43,7 @@ sanitize:
 	$(CC) -g $(CFLAGS) -o $(NAME) $(SRC) -fsanitize=address 
 
 clean:
-	$(RM) $(OBJ) screenshot.bmp
+	$(RM) $(OBJ)
 
 fclean: clean
 	$(RM) -rf $(NAME) $(NAME).dSYM

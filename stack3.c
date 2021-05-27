@@ -1,10 +1,10 @@
 #include "stack.h"
 #include <stdlib.h>
 
-int 		st_contains(t_stack *st, int n)
+int	st_contains(t_stack *st, int n)
 {
-	t_node *aux;
-	int ret;
+	t_node	*aux;
+	int		ret;
 
 	ret = 0;
 	aux = st->top;
@@ -19,9 +19,9 @@ int 		st_contains(t_stack *st, int n)
 	return (-1);
 }
 
-t_node 		*st_find(t_stack *st, int n)
+t_node	*st_find(t_stack *st, int n)
 {
-	t_node *aux;
+	t_node	*aux;
 
 	aux = st->top;
 	while (aux)
@@ -33,17 +33,17 @@ t_node 		*st_find(t_stack *st, int n)
 	return (aux);
 }
 
-void 		st_delete_node(t_stack *st, t_node *n)
+void	st_delete_node(t_stack *st, t_node *n)
 {
 	if (n)
 		st_delete_pos(st, st_contains(st, n->value));
 }
 
-void 		st_delete_pos(t_stack *st, int pos)
+void	st_delete_pos(t_stack *st, int pos)
 {
-	int i;
-	t_node *aux;
-	t_node *prev;
+	int		i;
+	t_node	*aux;
+	t_node	*prev;
 
 	aux = st->top;
 	i = 0;

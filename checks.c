@@ -1,8 +1,8 @@
 #include "stack.h"
 
-int ft_node_contains_dup(t_node *n)
+int	ft_node_contains_dup(t_node *n)
 {
-	int num;
+	int	num;
 
 	if (!n)
 		return (0);
@@ -17,21 +17,21 @@ int ft_node_contains_dup(t_node *n)
 	return (0);
 }
 
-int ft_check_stack(t_stack *st)
+int	ft_check_stack(t_stack *st)
 {
-	t_node *aux;
+	t_node	*aux;
 
 	aux = st->top;
 	while (aux)
 	{
 		if (ft_node_contains_dup(aux))
-			return (0); //falla
+			return (0);
 		aux = aux->next;
 	}
 	return (1);
 }
 
-int ft_is_double_inst(t_inst i)
+int	ft_is_double_inst(t_inst i)
 {
 	if (i == RR || i == RRR || i == SS)
 		return (1);

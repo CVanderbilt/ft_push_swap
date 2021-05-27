@@ -1,12 +1,13 @@
 #include "stack.h"
 #include "extras.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-int ft_rra(t_stack *a)
+int	ft_rra(t_stack *a)
 {
-	t_node *last;
-	t_node *aux;
-	int size;
+	t_node	*last;
+	t_node	*aux;
+	int		size;
 
 	size = st_size(a);
 	if (size <= 1)
@@ -19,11 +20,11 @@ int ft_rra(t_stack *a)
 	return (1);
 }
 
-int ft_ra(t_stack *a)
+int	ft_ra(t_stack *a)
 {
-	t_node *last;
-	t_node *first;
-	int size;
+	t_node	*last;
+	t_node	*first;
+	int		size;
 
 	size = st_size(a);
 	if (size <= 1)
@@ -36,23 +37,25 @@ int ft_ra(t_stack *a)
 	return (1);
 }
 
-int ft_pa(t_stack *a, t_stack *b)
+int	ft_pa(t_stack *a, t_stack *b)
 {
-	t_node *aux;
-	
+	t_node	*aux;
+	t_node	*control;
+
 	aux = st_pop(b);
 	if (!aux)
 		return (0);
-	aux = st_push(a, aux->value);
-	if (!aux)
+	control = st_push(a, aux->value);
+	free (aux);
+	if (!control)
 		return (0);
 	return (1);
 }
 
-int ft_sa(t_stack *a)
+int	ft_sa(t_stack *a)
 {
-	t_node *top;
-	t_node *second;
+	t_node	*top;
+	t_node	*second;
 
 	if (st_size(a) > 1)
 	{
@@ -65,7 +68,7 @@ int ft_sa(t_stack *a)
 	return (1);
 }
 
-int ft_execute(t_inst inst, t_stack *a, t_stack *b)
+int	ft_execute(t_inst inst, t_stack *a, t_stack *b)
 {
 	if (inst == RB)
 		return (ft_ra(b));
@@ -89,11 +92,7 @@ int ft_execute(t_inst inst, t_stack *a, t_stack *b)
 			return (0);
 		return (ft_sa(b));
 	}
-	if (inst == RR)
-	{
-		if (!ft_ra(a))
-			return (0);
-		return (ft_ra(b));
-	}
-	return (1);
+	if (!ft_ra(a))
+		return (0);
+	return (ft_ra(b));
 }
