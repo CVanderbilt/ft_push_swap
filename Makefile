@@ -14,7 +14,7 @@ NAME=push_swap
 
 BNAME=checker
 
-CC=gcc
+CC=gcc -g
 
 CFLAGS=-Wall -Wextra -Werror
 
@@ -64,6 +64,6 @@ fclean: clean
 	$(RM) -rf $(NAME) $(NAME).dSYM
 	$(RM) -rf $(BNAME) $(BNAME).dSYM
 
-re: fclean all
+re: fclean all bonus
 
 .PHONY: clean fclean all bonus

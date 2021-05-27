@@ -78,7 +78,7 @@ int main (int argc, char *argv[])
 	aux =ft_loop(a, b);
 	if (aux > 0)
 		write(1, "OK\n", 3);
-	else if (aux < 0)
+	else if (aux == 0)
 		write(1, "KO\n", 3);
 	else
 		return (1 + (int)ft_dummy_sum(write(1, "Error\n", 6)));

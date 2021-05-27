@@ -68,6 +68,7 @@ int	ft_check_st_sorted(t_stack *st)
 		}
 		else
 			return (0);
+		n = n->next;
 	}
 	return (1);
 }
