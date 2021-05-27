@@ -30,9 +30,9 @@ int	ft_auto_sort(t_data *d)
 		if (d->mem->top && d->mem->top->value == d->a->top->value)
 			st_pop_value(d->mem, &aux);
 		ft_execute_d(d, RA);
+		if (d->sorted >= d->a->size)
+			return (1);
 	}
-	if (d->sorted >= d->a->size)
-		return (1);
 	return (0);
 }
 
