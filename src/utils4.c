@@ -50,3 +50,24 @@ int ft_str_is_int(const char *str)
 	}
 	return (1);
 }
+
+int	ft_check_st_sorted(t_stack *st)
+{
+	t_node *n;
+	int prev;
+	int control;
+
+	control = 1;
+	n = st->top;
+	while (n)
+	{
+		if (control || prev < n->value)
+		{
+			prev = n->value;
+			control = 0;
+		}
+		else
+			return (0);
+	}
+	return (1);
+}

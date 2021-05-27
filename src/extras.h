@@ -32,6 +32,8 @@ void			ft_print_stacks(t_stack *a, t_stack *b);
 
 int				ft_bsort(t_data *d);
 
+t_inst			get_inst(const char *str);
+
 /*
 *	sorter
 */
@@ -73,9 +75,16 @@ void			*ft_dummy_sum(int n);
 int				ft_check_argv(int argc, char **argv);
 
 /*
-*	utils3
+*	utils4
 */
 int ft_strcmp(const char *s1, const char *s2);
+
+/*
+*	utils5
+*/
+char *ft_append(const char *s1, const char *s2);
+char *ft_strdup(const char *str);
+char *ft_strjoin(char *s1, char *s2, char c);
 
 /*
 *	stacksorter
@@ -83,5 +92,6 @@ int ft_strcmp(const char *s1, const char *s2);
 int				ft_node_sorted(t_stack *a, t_stack *b, int n);
 int				ft_str_is_int(const char *str);
 int				ft_strlen(const char *str);
+int				ft_check_st_sorted(t_stack *st);
 
 #endif

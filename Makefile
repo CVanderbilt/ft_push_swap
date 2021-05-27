@@ -12,6 +12,8 @@
 
 NAME=push_swap
 
+BNAME=checker
+
 CC=gcc
 
 CFLAGS=-Wall -Wextra -Werror
@@ -24,29 +26,43 @@ LDLIBS=-lft
 
 BMP=srcs/bmp.c
 
-SRC=asort.c asort_aux1.c asort_aux2.c \
-bsort.c checks.c evaluate.c main.c \
-orders.c sorter.c stack1.c stack2.c stack3.c \
-stack_sorter.c utils1.c utils2.c utils3.c utils4.c
+SRC=src/asort.c src/asort_aux1.c src/asort_aux2.c \
+	src/bsort.c src/checks.c src/evaluate.c src/orders.c \
+	src/sorter.c src/stack1.c src/stack2.c src/stack3.c \
+	src/utils1.c src/utils2.c src/utils3.c src/utils4.c src/utils5.c\
+	src/stack_sorter.c src/orders_aux.c
 
-OBJ=$(SRC:.c=.o)
+SRCMAIN=$(SRC) src/main.c
+
+SRCBONUS=$(SRC) src/checker.c
+
+OBJMAIN=$(SRCMAIN:.c=.o)
+
+OBJBONUS=$(SRCBONUS:.c=.o)
 
 $(NAME):
-	$(CC) $(CFLAGS) -c $(SRC)
-	$(CC) $(CFLAGS) -o $(NAME) $(SRC:.c=.o) 
+	$(CC) $(CFLAGS) -c $(SRCMAIN)
+	mv *.o src/
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJMAIN)
+
+$(BNAME):
+	$(CC) $(CFLAGS) -c $(SRCBONUS)
+	mv *.o src/
+	$(CC) $(CFLAGS) -o $(BNAME) $(OBJBONUS) 
 
 all: $(NAME)
 
-bonus: $(NAME)
+bonus: $(BNAME)
 
 sanitize:
 	$(CC) -g $(CFLAGS) -o $(NAME) $(SRC) -fsanitize=address 
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJMAIN) $(OBJBONUS)
 
 fclean: clean
 	$(RM) -rf $(NAME) $(NAME).dSYM
+	$(RM) -rf $(BNAME) $(BNAME).dSYM
 
 re: fclean all
 
