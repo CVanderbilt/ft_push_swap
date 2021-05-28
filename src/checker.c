@@ -57,12 +57,27 @@ int	init_program(int argc, t_stack **st, t_stack **st2)
 	return (0);
 }
 
-int	main (int argc, char *argv[])
+int	ft_end(int aux)
+{
+	if (aux > 0)
+		write(1, "OK\n", 3);
+	else if (aux == 0)
+		write(1, "KO\n", 3);
+	else
+		return (1 + (int)ft_dummy_sum(write(1, "Error\n", 6)));
+	return (0);
+}
+
+int	main (int argc, char *argvv[])
 {
 	int		aux;
 	t_stack	*a;
 	t_stack	*b;
+	char	**argv;
 
+	argv = argv_splitter(argc, argvv, 0, 0);
+	if (!argv)
+		return (write(1, "Error\n", 6));
 	if (!ft_check_argv(argc, argv))
 		return (1);
 	if (init_program(argc, &a, &b))
@@ -76,12 +91,5 @@ int	main (int argc, char *argv[])
 		return (write(2, "Error\n", 6) + (int)st_free(a) + (int)st_free(b));
 	if (!ft_check_stack(a))
 		return (write(2, "Error\n", 6) + (int)st_free(a) + (int)st_free(b));
-	aux = ft_loop(a, b);
-	if (aux > 0)
-		write(1, "OK\n", 3);
-	else if (aux == 0)
-		write(1, "KO\n", 3);
-	else
-		return (1 + (int)ft_dummy_sum(write(1, "Error\n", 6)));
-	return (0);
+	return (ft_end(ft_loop(a, b)));
 }

@@ -30,7 +30,7 @@ SRC=src/asort.c src/asort_aux1.c src/asort_aux2.c \
 	src/bsort.c src/checks.c src/evaluate.c src/orders.c \
 	src/sorter.c src/stack1.c src/stack2.c src/stack3.c \
 	src/utils1.c src/utils2.c src/utils3.c src/utils4.c src/utils5.c\
-	src/stack_sorter.c src/orders_aux.c
+	src/stack_sorter.c src/orders_aux.c src/argv_parser1.c src/argv_parser2.c
 
 SRCMAIN=$(SRC) src/main.c
 

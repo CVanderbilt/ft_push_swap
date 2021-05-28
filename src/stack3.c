@@ -67,3 +67,16 @@ void	st_delete_pos(t_stack *st, int pos)
 	free (aux);
 	st->size--;
 }
+
+int	st_pop_value(t_stack *st, int *n)
+{
+	t_node	*no;
+
+	no = st_pop(st);
+	if (!no)
+		return (0);
+	if (n)
+		*n = no->value;
+	free (no);
+	return (1);
+}

@@ -17,7 +17,7 @@ t_node	*st_get_node(t_stack *st, int n)
 	return (aux);
 }
 
-void			*st_free_full(t_stack *st)
+void	*st_free_full(t_stack *st)
 {
 	t_node	*n;
 
@@ -28,7 +28,7 @@ void			*st_free_full(t_stack *st)
 		n = st_pop(st);
 		if (n->aux)
 			free (n->aux);
-		free(n);	
+		free (n);
 	}
 	free (st);
 	return (0);
@@ -43,7 +43,7 @@ void	*st_free(t_stack *st)
 	while (st->top)
 	{
 		n = st_pop(st);
-		free(n);	
+		free (n);
 	}
 	free (st);
 	return (0);
@@ -79,18 +79,5 @@ int	st_empty(t_stack *st)
 {
 	if (st->top)
 		return (0);
-	return (1);
-}
-
-int	st_pop_value(t_stack *st, int *n)
-{
-	t_node	*no;
-
-	no = st_pop(st);
-	if (!no)
-		return (0);
-	if (n)
-		*n = no->value;
-	free (no);
 	return (1);
 }

@@ -94,4 +94,16 @@ int				ft_str_is_int(const char *str);
 int				ft_strlen(const char *str);
 int				ft_check_st_sorted(t_stack *st);
 
+/*
+*	argv parser1
+*/
+char			**argv_splitter(int argc, char **argv, int i, int j);
+
+/*
+*	argv parser2
+*/
+
+int				ft_free_arg(char **argv);
+int				get_argv_size(char **argv, int *aux);
+
 #endif

@@ -44,7 +44,7 @@ int	ft_pa(t_stack *a, t_stack *b)
 
 	aux = st_pop(b);
 	if (!aux)
-		return (0);
+		return (1);
 	control = st_push(a, aux->value);
 	free (aux);
 	if (!control)
