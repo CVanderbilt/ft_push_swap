@@ -42,7 +42,7 @@ int	ft_print_biggest(t_stack *a, t_stack *b)
 	if (b)
 		bs = b->size;
 	p = b;
-	if (a->size >= bs)
+	if (!b || a->size <= bs)
 		p = a;
 	while (p->top)
 	{
@@ -95,7 +95,7 @@ t_stack	*ft_sort_old(t_stack *a)
 		if (i == END)
 			break ;
 		i = ft_try_double(b, i);
-		if (!ft_execute(i, a, b) || 1)
+		if (!ft_execute(i, a, b))
 			return (ft_dummy_sum((int)st_free(a) + (int)st_free(b)
 					+ (int)st_free(ret)));
 		st_push(ret, i);

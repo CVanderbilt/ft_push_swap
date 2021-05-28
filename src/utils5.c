@@ -11,7 +11,7 @@ char	*ft_append(const char *s1, const char *s2)
 	error = 0;
 	if (!s1 || !s2)
 		return (0);
-	ret = (char *)malloc(ft_strlen(s1) + ft_strlen(2) + 1));
+	ret = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!ret)
 		error = 1;
 	i = -1;

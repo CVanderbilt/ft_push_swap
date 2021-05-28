@@ -14,7 +14,7 @@ NAME=push_swap
 
 BNAME=checker
 
-CC=gcc -g
+CC=gcc
 
 CFLAGS=-Wall -Wextra -Werror
 
@@ -54,8 +54,19 @@ all: $(NAME)
 
 bonus: $(BNAME)
 
+debug:
+	$(CC) -g $(CFLAGS) -c $(SRCMAIN)
+	$(CC) -g $(CFLAGS) -c $(SRCBONUS)
+	mv *.o src/
+	$(CC) -g $(CFLAGS) -o $(NAME) $(OBJMAIN)
+	$(CC) -g $(CFLAGS) -o $(BNAME) $(OBJBONUS) 
+
 sanitize:
-	$(CC) -g $(CFLAGS) -o $(NAME) $(SRC) -fsanitize=address 
+	$(CC) -g $(CFLAGS) -c $(SRCMAIN) -fsanitize=address
+	$(CC) -g $(CFLAGS) -c $(SRCBONUS) -fsanitize=address
+	mv *.o src/
+	$(CC) -g $(CFLAGS) -o $(NAME) $(OBJMAIN) -fsanitize=address
+	$(CC) -g $(CFLAGS) -o $(BNAME) $(OBJBONUS) -fsanitize=address
 
 clean:
 	$(RM) $(OBJMAIN) $(OBJBONUS)

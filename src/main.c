@@ -35,9 +35,9 @@ int	main(int argc, char *argv[])
 		return (write(2, "Error\n", 6) + (int)st_free(st) + (int)st_free(st2));
 	if (!ft_check_stack(st2))
 		return (write(2, "Error\n", 6) + (int)st_free(st) + (int)st_free(st2));
-	if (st->size <= 100)
+	if (st->size <= 200)
 		old = ft_sort_old(st);
-	if (old)
-		st = old;
-	return (ft_sort(st2, old));
+	if (ft_sort(st2, old))
+		return (0);
+	return (1);
 }
