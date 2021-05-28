@@ -17,7 +17,7 @@ t_node	*st_get_node(t_stack *st, int n)
 	return (aux);
 }
 
-void	*st_free(t_stack *st)
+void			*st_free_full(t_stack *st)
 {
 	t_node	*n;
 
@@ -28,6 +28,21 @@ void	*st_free(t_stack *st)
 		n = st_pop(st);
 		if (n->aux)
 			free (n->aux);
+		free(n);	
+	}
+	free (st);
+	return (0);
+}
+
+void	*st_free(t_stack *st)
+{
+	t_node	*n;
+
+	if (!st)
+		return (0);
+	while (st->top)
+	{
+		n = st_pop(st);
 		free(n);	
 	}
 	free (st);
@@ -50,6 +65,7 @@ int	st_reverse(t_stack **st)
 		if (!aux)
 			break ;
 		control = st_push(ret, aux->value);
+		ret->top->aux = aux->aux;
 		free (aux);
 		if (!control)
 			return ((int)st_free(ret));

@@ -55,5 +55,6 @@ t_stack			*st_dup(t_stack *st);
 int				st_pop_value(t_stack *st, int *n);
 
 void			*st_free(t_stack *st);
+void			*st_free_full(t_stack *st);
 
 #endif

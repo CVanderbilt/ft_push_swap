@@ -57,7 +57,7 @@ char	*ft_strjoin(char *s1, char *s2, char c)
 
 int	skip_char(int i, const char *str, char c)
 {
-	while (str[i] && str[i] != c)
+	while (str[i] == c)
 		i++;
 	return (i);
 }
@@ -85,7 +85,7 @@ char	*ft_strcdup(const char *str, char c)
 	return (ret);
 }
 
-char	**argv_splitter(int argc, const char **argv)
+char	**argv_splitter(int argc, char **argv)
 {
 	t_stack	*st;
 	int i;
@@ -95,6 +95,11 @@ char	**argv_splitter(int argc, const char **argv)
 	st = st_new();
 	if  (!st)
 		return (0);
+	if (!st_push(st, 0))
+		 return (st_free_full(st));
+	st->top->aux = ft_strdup("push_swap");
+	if (!st->top->aux)
+		return (st_free_full(st));
 	i = 0;
 	while (++i < argc)
 	{
@@ -102,18 +107,21 @@ char	**argv_splitter(int argc, const char **argv)
 		while (1)
 		{
 			j = skip_char(j, argv[i], ' ');
-			if (!argv[i])
+			if (!argv[i][j])
 				break ;
 			if (!st_push(st, i))
-				return (st_free(st));
+				return (st_free_full(st));
 			st->top->aux = ft_strcdup(argv[i] + j, ' ');
 			if (!st->top->aux)
-				return (st_free(st));
+				return (st_free_full(st));
+			j = skip_not_char(j, argv[i], ' ');
 		}
 	}
+	if (!st_reverse(&st))
+		return (st_free_full(st));
 	ret = (char **)malloc(sizeof(char *) * (st->size + 1));
 	if (!ret)
-		return (st_free(st));
+		return (st_free_full(st));
 	i = 0;
 	j = st->size;
 	while (i < j)
@@ -122,6 +130,7 @@ char	**argv_splitter(int argc, const char **argv)
 		st_pop_value(st, 0);
 		i++;
 	}
+	st_free(st);
 	ret[i] = 0;
 	return (ret);
 }
