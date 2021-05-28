@@ -52,6 +52,7 @@ t_node	*st_push(t_stack *st, int n)
 	if (!aux)
 		return (0);
 	aux->value = n;
+	aux->aux = 0;
 	aux->next = st->top;
 	st->top = aux;
 	st->size++;

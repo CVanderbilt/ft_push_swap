@@ -54,3 +54,74 @@ char	*ft_strjoin(char *s1, char *s2, char c)
 		free (s2);
 	return (ret);
 }
+
+int	skip_char(int i, const char *str, char c)
+{
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
+}
+
+int skip_not_char(int i, const char *str, char c)
+{
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
+}
+
+char	*ft_strcdup(const char *str, char c)
+{
+	int		len;
+	char 	*ret;
+
+	len = 0;
+	while(str[len] && str[len] != c)
+		len++;
+	ret = (char *)malloc(len + 1);
+	len = -1;
+	while(str[++len] && str[len] != c)
+		ret[len] = str[len];
+	ret[len] = 0;
+	return (ret);
+}
+
+char	**argv_splitter(int argc, const char **argv)
+{
+	t_stack	*st;
+	int i;
+	int j;
+	char **ret;
+
+	st = st_new();
+	if  (!st)
+		return (0);
+	i = 0;
+	while (++i < argc)
+	{
+		j = 0;
+		while (1)
+		{
+			j = skip_char(j, argv[i], ' ');
+			if (!argv[i])
+				break ;
+			if (!st_push(st, i))
+				return (st_free(st));
+			st->top->aux = ft_strcdup(argv[i] + j, ' ');
+			if (!st->top->aux)
+				return (st_free(st));
+		}
+	}
+	ret = (char **)malloc(sizeof(char *) * (st->size + 1));
+	if (!ret)
+		return (st_free(st));
+	i = 0;
+	j = st->size;
+	while (i < j)
+	{
+		ret[i] = st->top->aux;
+		st_pop_value(st, 0);
+		i++;
+	}
+	ret[i] = 0;
+	return (ret);
+}

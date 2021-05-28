@@ -26,7 +26,9 @@ void	*st_free(t_stack *st)
 	while (st->top)
 	{
 		n = st_pop(st);
-		free(n);
+		if (n->aux)
+			free (n->aux);
+		free(n);	
 	}
 	free (st);
 	return (0);
@@ -71,7 +73,8 @@ int	st_pop_value(t_stack *st, int *n)
 	no = st_pop(st);
 	if (!no)
 		return (0);
-	*n = no->value;
+	if (n)
+		*n = no->value;
 	free (no);
 	return (1);
 }

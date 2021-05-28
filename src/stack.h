@@ -26,6 +26,7 @@ typedef struct s_node
 {
 	int			value;
 	void		*next;
+	char		*aux;
 }				t_node;
 
 typedef struct s_stack
