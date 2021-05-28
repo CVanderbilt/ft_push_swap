@@ -69,6 +69,7 @@ sanitize:
 	$(CC) -g $(CFLAGS) -o $(BNAME) $(OBJBONUS) -fsanitize=address
 
 clean:
+	$(RM) *.o
 	$(RM) $(OBJMAIN) $(OBJBONUS)
 
 fclean: clean
