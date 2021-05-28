@@ -46,14 +46,14 @@ int	ft_check_argv(int argc, char **argv)
 	i = 1;
 	if (argc <= 1)
 	{
-		write(2, "Err0r\n", 6);
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	while (i < argc)
 	{
 		if (!ft_is_num_int(argv[i]))
 		{
-			write(2, "3rror\n", 6);
+			write(2, "Error\n", 6);
 			return (0);
 		}
 		i++;
